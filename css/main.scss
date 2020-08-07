@@ -1,0 +1,188 @@
+@import "normalize.scss";
+
+//--- mixins ---
+@mixin font-rubik {
+  font-family: 'Rubik', sans-serif;
+}
+
+//--- /mixins ---
+
+//--- variables ---
+$color-white: #FFFFFF;
+$color-black: #000000;
+$color-bg-main: #FFF;
+$color-bg-secondary: #FFF;
+$color-bg-mask: #000B0C;
+$color-font-main: #DBFEFE;
+$color-font-secondary: #FFF;
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+//--- /variables ---
+
+
+// --- common ---
+body {
+  @include font-rubik;
+}
+
+.section-outer {
+}
+
+.section-inner {
+  width: 1020px;
+  margin: 0 auto;
+}
+
+// --- /common ---
+
+
+// --- header ---
+.section-header {
+  color: $color-font-main;
+  background: url("../img/background/header-bg.jpg") no-repeat 50% 50%;
+  background-size: cover;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $color-bg-mask;
+    opacity: 0.7;
+  }
+
+  .section-inner {
+    height: 100vh;
+    position: relative;
+    z-index: 10;
+    display: flex;
+  }
+
+  &-content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  &-wrapper {
+    margin: 255px auto 0;
+
+    &-person,
+    &-links {
+      text-align: center;
+
+    }
+
+    &-person {
+
+      &__name {
+        font-size: 50px;
+        font-weight: $font-weight-medium;
+      }
+
+      &__position {
+        margin-top: 60px;
+        margin-bottom: 65px;
+        font-size: 28px;
+        font-weight: $font-weight-light;
+      }
+    }
+
+
+    &-links {
+      display: flex;
+      justify-content: center;
+
+      &__item {
+        text-decoration: none;
+        margin: 0 25px;
+
+        &:hover .logo {
+          transform: scale(1.15);
+
+        }
+
+        .logo {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          width: 50px;
+          height: 50px;
+          transition: 0.40s;
+
+          &::before {
+            content: "";
+            position: absolute;
+            z-index: 6;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: $color-bg-mask;
+            opacity: 1;
+            border-radius: 100%;
+          }
+
+          img {
+            position: relative;
+            z-index: 10;
+          }
+        }
+
+        .name {
+          font-size: 12px;
+          font-weight: $font-weight-regular;
+          color: $color-font-main;
+          margin-top: 6px;
+
+        }
+      }
+    }
+  }
+
+}
+
+// --- /header ---
+
+// --- about ---
+.section-about {
+
+}
+
+// --- /about ---
+
+// --- projects ---
+.section-projects {
+
+}
+
+// --- /projects ---
+
+// --- skills ---
+.section-skills {
+
+}
+
+// --- /skills ---
+
+// --- certificates ---
+.section-certificates {
+
+}
+
+// --- /certificates ---
+
+// --- contacts ---
+.section-contacts {
+
+}
+
+// --- /contacts ---
+
