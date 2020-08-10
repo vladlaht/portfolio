@@ -1,30 +1,78 @@
-@import "normalize.scss";
+@import "normalizer/normalize";
+@import "variables/variables";
 
 //--- mixins ---
 @mixin font-rubik {
   font-family: 'Rubik', sans-serif;
 }
 
+@mixin section-title($color) {
+  overflow: hidden;
+  text-align: center;
+  font-weight: $font-weight-medium;
+  padding: 60px 0;
+
+  &::before,
+  &::after {
+    background-color: $color;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+
+  }
+
+  &::before {
+    right: 0.8em;
+    margin-left: -50%;
+  }
+
+  &::after {
+    left: 0.8em;
+    margin-right: -50%;
+  }
+
+}
+
+@mixin section-background($url) {
+  color: $color-font-main;
+  background: url($url) no-repeat 50% 50%;
+  background-size: cover;
+  position: relative;
+}
+
+@mixin section-background-mask {
+  content: "";
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $color-bg-mask;
+  opacity: 0.7;
+}
+
+@mixin section-inner-masked {
+  height: 100vh;
+  position: relative;
+  z-index: 10;
+}
+
+@mixin section-bottom-padding {
+  padding-bottom: 70px;
+}
+
 //--- /mixins ---
-
-//--- variables ---
-$color-white: #FFFFFF;
-$color-black: #000000;
-$color-bg-main: #FFF;
-$color-bg-secondary: #FFF;
-$color-bg-mask: #000B0C;
-$color-font-main: #DBFEFE;
-$color-font-secondary: #FFF;
-
-$font-weight-light: 300;
-$font-weight-regular: 400;
-$font-weight-medium: 500;
-//--- /variables ---
 
 
 // --- common ---
 body {
   @include font-rubik;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .section-outer {
@@ -40,127 +88,176 @@ body {
 
 // --- header ---
 .section-header {
-  color: $color-font-main;
-  background: url("../img/background/header-bg.jpg") no-repeat 50% 50%;
-  background-size: cover;
-  position: relative;
+  @include section-background("../img/background/header-bg.jpg");
 
   &::before {
-    content: "";
-    position: absolute;
-    z-index: 5;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: $color-bg-mask;
-    opacity: 0.7;
+    @include section-background-mask
   }
 
   .section-inner {
-    height: 100vh;
-    position: relative;
-    z-index: 10;
+    @include section-inner-masked;
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &-content {
-    flex-grow: 1;
+    padding-top: 255px
+  }
+
+  &-person,
+  &-links {
+    text-align: center;
+  }
+
+  &-person {
+    &__name {
+      font-size: 50px;
+      font-weight: $font-weight-medium;
+    }
+
+    &__position {
+      margin-top: 60px;
+      margin-bottom: 65px;
+      font-size: 28px;
+      font-weight: $font-weight-light;
+    }
+  }
+
+  &-links {
     display: flex;
-    align-items: center;
-  }
+    justify-content: center;
 
-  &-wrapper {
-    margin: 255px auto 0;
+    &__item {
+      text-decoration: none;
+      margin: 0 25px;
 
-    &-person,
-    &-links {
-      text-align: center;
+      &:hover .logo {
+        transform: scale(1.15);
 
-    }
-
-    &-person {
-
-      &__name {
-        font-size: 50px;
-        font-weight: $font-weight-medium;
       }
 
-      &__position {
-        margin-top: 60px;
-        margin-bottom: 65px;
-        font-size: 28px;
-        font-weight: $font-weight-light;
-      }
-    }
+      .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 48px;
+        height: 48px;
+        transition: 0.40s;
 
-
-    &-links {
-      display: flex;
-      justify-content: center;
-
-      &__item {
-        text-decoration: none;
-        margin: 0 25px;
-
-        &:hover .logo {
-          transform: scale(1.15);
-
+        &::before {
+          content: "";
+          position: absolute;
+          z-index: 6;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: $color-bg-mask;
+          opacity: 1;
+          border-radius: 100%;
         }
 
-        .logo {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+        img {
           position: relative;
-          width: 50px;
-          height: 50px;
-          transition: 0.40s;
-
-          &::before {
-            content: "";
-            position: absolute;
-            z-index: 6;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-color: $color-bg-mask;
-            opacity: 1;
-            border-radius: 100%;
-          }
-
-          img {
-            position: relative;
-            z-index: 10;
-          }
+          z-index: 10;
         }
+      }
 
-        .name {
-          font-size: 12px;
-          font-weight: $font-weight-regular;
-          color: $color-font-main;
-          margin-top: 6px;
+      .name {
+        font-size: 12px;
+        font-weight: $font-weight-regular;
+        color: $color-font-main;
+        margin-top: 6px;
 
-        }
       }
     }
   }
-
 }
 
 // --- /header ---
 
 // --- about ---
 .section-about {
+  @include section-bottom-padding;
+  background-color: $color-bg-main;
 
+  &__title {
+    @include section-title($color-black);
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__photo {
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      height: 220px;
+      width: auto;
+      border-radius: 100%;
+    }
+  }
+
+  &__description {
+    &-title {
+      font-weight: $font-weight-medium;
+    }
+
+    &-text {
+      margin-top: 1em;
+      padding-right: 40px;
+    }
+  }
+
+  &__facts {
+    &-title {
+      font-weight: $font-weight-medium;
+    }
+
+    &-list {
+      ul {
+        padding-inline-start: 0;
+        list-style: inside;
+      }
+    }
+  }
+
+  &__photo,
+  &__description,
+  &__facts {
+    flex: 1;
+  }
+
+  &__description,
+  &__facts {
+    height: 150px;
+  }
 }
 
 // --- /about ---
 
 // --- projects ---
 .section-projects {
+  @include section-bottom-padding;
+  @include section-background("../img/background/project-bg.jpg");
 
+  &::before {
+    @include section-background-mask;
+  }
+
+  .section-inner {
+   @include section-inner-masked;
+  }
+
+  &__title {
+    @include section-title($color-white);
+  }
 }
 
 // --- /projects ---
