@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -10,6 +11,11 @@ html {
   /* 1 */
   -webkit-text-size-adjust: 100%;
   /* 2 */
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 /* Sections
@@ -169,6 +175,10 @@ textarea {
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
  */
+button {
+  border: none;
+}
+
 button,
 input {
   /* 1 */
@@ -202,7 +212,7 @@ button::-moz-focus-inner,
 [type=button]::-moz-focus-inner,
 [type=reset]::-moz-focus-inner,
 [type=submit]::-moz-focus-inner {
-  border-style: none;
+  border: none;
   padding: 0;
 }
 
@@ -342,40 +352,27 @@ template {
 body {
   font-family: "Rubik", sans-serif;
   font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
   line-height: 1.6;
 }
 
 .section-inner {
-  width: 1020px;
+  max-width: 1020px;
   margin: 0 auto;
 }
 
 .section-header {
-  color: #DBFEFE;
-  background: url("../img/background/header-bg.jpg") no-repeat 50% 50%;
+  color: #E9FFFF;
+  background: url("../img/background/header-bg2.jpg") no-repeat center;
   background-size: cover;
-  position: relative;
-}
-.section-header::before {
-  content: "";
-  position: absolute;
-  z-index: 5;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #000B0C;
-  opacity: 0.7;
 }
 .section-header .section-inner {
-  height: 100vh;
-  position: relative;
-  z-index: 10;
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.section-header-content {
   padding-top: 255px;
 }
 .section-header-person, .section-header-links {
@@ -384,12 +381,13 @@ body {
 .section-header-person__name {
   font-size: 50px;
   font-weight: 500;
+  margin-bottom: 60px;
 }
 .section-header-person__position {
-  margin-top: 60px;
   margin-bottom: 65px;
   font-size: 28px;
   font-weight: 300;
+  text-transform: uppercase;
 }
 .section-header-links {
   display: flex;
@@ -410,17 +408,18 @@ body {
   width: 48px;
   height: 48px;
   transition: 0.4s;
+  margin-bottom: 6px;
 }
-.section-header-links__item .logo::before {
+.section-header-links__item .logo::after {
   content: "";
   position: absolute;
-  z-index: 6;
+  z-index: 5;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   background-color: #000B0C;
-  opacity: 1;
+  opacity: 0.7;
   border-radius: 100%;
 }
 .section-header-links__item .logo img {
@@ -430,21 +429,21 @@ body {
 .section-header-links__item .name {
   font-size: 12px;
   font-weight: 400;
-  color: #DBFEFE;
-  margin-top: 6px;
+  color: #E9FFFF;
 }
 
 .section-about {
   padding-bottom: 70px;
   background-color: #EDFFFF;
 }
-.section-about__title {
+.section-about-title {
   overflow: hidden;
   text-align: center;
   font-weight: 500;
   padding: 60px 0;
+  font-size: 35px;
 }
-.section-about__title::before, .section-about__title::after {
+.section-about-title::before, .section-about-title::after {
   background-color: #000000;
   content: "";
   display: inline-block;
@@ -453,11 +452,11 @@ body {
   vertical-align: middle;
   width: 50%;
 }
-.section-about__title::before {
+.section-about-title::before {
   right: 0.8em;
   margin-left: -50%;
 }
-.section-about__title::after {
+.section-about-title::after {
   left: 0.8em;
   margin-right: -50%;
 }
@@ -466,7 +465,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-.section-about__photo img {
+.section-about-photo img {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -474,35 +473,80 @@ body {
   width: auto;
   border-radius: 100%;
 }
-.section-about__description-title {
+.section-about-description__title {
+  display: block;
   font-weight: 500;
+  margin-bottom: 1em;
 }
-.section-about__description-text {
-  margin-top: 1em;
+.section-about-description__text {
   padding-right: 40px;
 }
-.section-about__facts-title {
+.section-about-facts__title {
   font-weight: 500;
 }
-.section-about__facts-list ul {
+.section-about-facts__list ul {
   padding-inline-start: 0;
-  list-style: inside;
+  list-style: none;
 }
-.section-about__photo, .section-about__description, .section-about__facts {
+.section-about-facts__list ul li {
+  position: relative;
+  padding-left: 20px;
+}
+.section-about-facts__list ul li::before {
+  content: "➤";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  font-size: 10px;
+}
+.section-about-photo, .section-about-description, .section-about-facts {
   flex: 1;
 }
-.section-about__description, .section-about__facts {
+.section-about-description, .section-about-facts {
   height: 150px;
 }
 
 .section-projects {
   padding-bottom: 70px;
-  color: #DBFEFE;
-  background: url("../img/background/project-bg.jpg") no-repeat 50% 50%;
+  color: #E9FFFF;
+  background: url("../img/background/projects-bg.jpg") no-repeat center;
   background-size: cover;
+}
+.section-projects-title {
+  overflow: hidden;
+  text-align: center;
+  font-weight: 500;
+  padding: 60px 0;
+  font-size: 35px;
+}
+.section-projects-title::before, .section-projects-title::after {
+  background-color: #FFFFFF;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+.section-projects-title::before {
+  right: 0.8em;
+  margin-left: -50%;
+}
+.section-projects-title::after {
+  left: 0.8em;
+  margin-right: -50%;
+}
+.section-projects-list {
+  width: 100%;
+}
+.section-projects-list__item {
+  display: flex;
   position: relative;
 }
-.section-projects::before {
+.section-projects-list__item:not(:last-child) {
+  margin-bottom: 70px;
+}
+.section-projects-list__item::after {
   content: "";
   position: absolute;
   z-index: 5;
@@ -513,33 +557,78 @@ body {
   background-color: #000B0C;
   opacity: 0.7;
 }
-.section-projects .section-inner {
-  height: 100vh;
-  position: relative;
+.section-projects-list__item-photo {
   z-index: 10;
+  padding: 15px;
+  flex: 4;
 }
-.section-projects__title {
-  overflow: hidden;
-  text-align: center;
+.section-projects-list__item-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.section-projects-list__item-description.project-description {
+  z-index: 10;
+  padding: 15px;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.section-projects-list__item-description.project-description .project-description__title {
   font-weight: 500;
-  padding: 60px 0;
+  text-transform: uppercase;
 }
-.section-projects__title::before, .section-projects__title::after {
-  background-color: #FFFFFF;
-  content: "";
-  display: inline-block;
-  height: 1px;
+.section-projects-list__item-description.project-description .project-description__tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+.section-projects-list__item-description.project-description .project-description__tags-tag {
+  color: #B4B4B4;
+  border: 1.5px solid #000000;
+  padding: 1px 8px;
+  margin-right: 12px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+.section-projects-list__item-description.project-description .project-description__text {
+  font-size: 14px;
+}
+.section-projects-list__item-description.project-description .project-description__text-list ul {
+  padding-inline-start: 0;
+  list-style: none;
+}
+.section-projects-list__item-description.project-description .project-description__text-list ul li {
   position: relative;
-  vertical-align: middle;
-  width: 50%;
+  padding-left: 20px;
 }
-.section-projects__title::before {
-  right: 0.8em;
-  margin-left: -50%;
+.section-projects-list__item-description.project-description .project-description__text-list ul li::before {
+  content: "➤";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  font-size: 10px;
 }
-.section-projects__title::after {
-  left: 0.8em;
-  margin-right: -50%;
+.section-projects-list__item-description.project-description .project-description__text-list ul {
+  margin-block-start: 5px;
+}
+.section-projects-list__item-description.project-description .project-description__text-list span {
+  font-weight: 500;
+}
+.section-projects-list__item-description.project-description .project-description__button-area {
+  display: flex;
+}
+.section-projects-list__item-description.project-description .project-description__button-area button {
+  width: 110px;
+  height: 24px;
+  text-transform: uppercase;
+  margin-right: 28px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 3px;
+  background-color: #EDFFFF;
+  color: #000000;
 }
 
 /*# sourceMappingURL=main.css.map */

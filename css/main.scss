@@ -1,7 +1,7 @@
 @import "normalizer/normalize";
 @import "variables/variables";
 
-//--- mixins ---
+//------- mixins -------
 @mixin font-rubik {
   font-family: 'Rubik', sans-serif;
 }
@@ -11,6 +11,7 @@
   text-align: center;
   font-weight: $font-weight-medium;
   padding: 60px 0;
+  font-size: 35px;
 
   &::before,
   &::after {
@@ -33,17 +34,15 @@
     left: 0.8em;
     margin-right: -50%;
   }
-
 }
 
 @mixin section-background($url) {
   color: $color-font-main;
-  background: url($url) no-repeat 50% 50%;
+  background: url($url) no-repeat center;
   background-size: cover;
-  position: relative;
 }
 
-@mixin section-background-mask {
+@mixin background-mask {
   content: "";
   position: absolute;
   z-index: 5;
@@ -55,53 +54,66 @@
   opacity: 0.7;
 }
 
-@mixin section-inner-masked {
-  height: 100vh;
-  position: relative;
-  z-index: 10;
-}
-
 @mixin section-bottom-padding {
   padding-bottom: 70px;
 }
 
-//--- /mixins ---
+@mixin list-style {
+  ul {
+    padding-inline-start: 0;
+    list-style: none;
+
+    li {
+      position: relative;
+      padding-left: 20px;
+
+      &::before {
+        content: "\27A4";
+        position: absolute;
+        left: 0;
+        top: 4px;
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+//------- /mixins -------
 
 
-// --- common ---
+// ------- common -------
+
+
 body {
   @include font-rubik;
   font-size: 15px;
+  font-style: normal;
+  font-weight: $font-weight-regular;
   line-height: 1.6;
+
 }
 
 .section-outer {
 }
 
 .section-inner {
-  width: 1020px;
+  max-width: 1020px;
   margin: 0 auto;
 }
 
-// --- /common ---
+// ------- /common -------
 
 
-// --- header ---
+// ------- header -------
 .section-header {
-  @include section-background("../img/background/header-bg.jpg");
-
-  &::before {
-    @include section-background-mask
-  }
+  @include section-background("../img/background/header-bg2.jpg");
 
   .section-inner {
-    @include section-inner-masked;
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-
-  &-content {
     padding-top: 255px
   }
 
@@ -114,13 +126,14 @@ body {
     &__name {
       font-size: 50px;
       font-weight: $font-weight-medium;
+      margin-bottom: 60px;
     }
 
     &__position {
-      margin-top: 60px;
       margin-bottom: 65px;
       font-size: 28px;
       font-weight: $font-weight-light;
+      text-transform: uppercase;
     }
   }
 
@@ -134,7 +147,6 @@ body {
 
       &:hover .logo {
         transform: scale(1.15);
-
       }
 
       .logo {
@@ -145,17 +157,10 @@ body {
         width: 48px;
         height: 48px;
         transition: 0.40s;
+        margin-bottom: 6px;
 
-        &::before {
-          content: "";
-          position: absolute;
-          z-index: 6;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          background-color: $color-bg-mask;
-          opacity: 1;
+        &::after {
+          @include background-mask;
           border-radius: 100%;
         }
 
@@ -169,21 +174,19 @@ body {
         font-size: 12px;
         font-weight: $font-weight-regular;
         color: $color-font-main;
-        margin-top: 6px;
-
       }
     }
   }
 }
 
-// --- /header ---
+// ------- /header -------
 
-// --- about ---
+// ------- about -------
 .section-about {
   @include section-bottom-padding;
   background-color: $color-bg-main;
 
-  &__title {
+  &-title {
     @include section-title($color-black);
   }
 
@@ -193,7 +196,7 @@ body {
     justify-content: center;
   }
 
-  &__photo {
+  &-photo {
     img {
       display: block;
       margin-left: auto;
@@ -204,82 +207,166 @@ body {
     }
   }
 
-  &__description {
-    &-title {
+  &-description {
+    &__title {
+      display: block;
       font-weight: $font-weight-medium;
+      margin-bottom: 1em;
     }
 
-    &-text {
-      margin-top: 1em;
+    &__text {
       padding-right: 40px;
     }
   }
 
-  &__facts {
-    &-title {
+  &-facts {
+    &__title {
       font-weight: $font-weight-medium;
     }
 
-    &-list {
-      ul {
-        padding-inline-start: 0;
-        list-style: inside;
-      }
+    &__list {
+      @include list-style;
     }
   }
 
-  &__photo,
-  &__description,
-  &__facts {
+  &-photo,
+  &-description,
+  &-facts {
     flex: 1;
   }
 
-  &__description,
-  &__facts {
+  &-description,
+  &-facts {
     height: 150px;
   }
 }
 
-// --- /about ---
+// ------- /about -------
 
-// --- projects ---
+// ------- projects -------
 .section-projects {
   @include section-bottom-padding;
-  @include section-background("../img/background/project-bg.jpg");
+  @include section-background("../img/background/projects-bg.jpg");
 
-  &::before {
-    @include section-background-mask;
-  }
-
-  .section-inner {
-   @include section-inner-masked;
-  }
-
-  &__title {
+  &-title {
     @include section-title($color-white);
+  }
+
+  &-list {
+    width: 100%;
+
+    &__item {
+      display: flex;
+      position: relative;
+
+      &:not(:last-child) {
+        margin-bottom: 70px;
+      }
+
+      &::after {
+        @include background-mask;
+      }
+
+      &-photo {
+        z-index: 10;
+        padding: 15px;
+        flex: 4;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover
+        }
+      }
+
+      &-description.project-description {
+        z-index: 10;
+        padding: 15px;
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+
+        .project-description {
+          &__title {
+            font-weight: $font-weight-medium;
+            text-transform: uppercase;
+          }
+
+          &__tags {
+            display: flex;
+            flex-wrap: wrap;
+
+            &-tag {
+              color: $color-font-secondary;
+              border: 1.5px solid $color-black;
+              padding: 1px 8px;
+              margin-right: 12px;
+              margin-bottom: 10px;
+              font-size: 13px;
+            }
+          }
+
+          &__text {
+            font-size: 14px;
+
+            &-list {
+              @include list-style;
+
+              ul {
+                margin-block-start: 5px;
+              }
+
+              span {
+                font-weight: $font-weight-medium;
+              }
+
+            }
+          }
+
+          &__button-area {
+            display: flex;
+
+            button {
+              width: 110px;
+              height: 24px;
+              text-transform: uppercase;
+              margin-right: 28px;
+              text-align: center;
+              font-size: 11px;
+              font-weight: $font-weight-bold;
+              border-radius: 3px;
+              background-color: $color-bg-main;
+              color: $color-black;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
-// --- /projects ---
+// ------- /projects -------
 
-// --- skills ---
+// ------- skills -------
 .section-skills {
 
 }
 
-// --- /skills ---
+// ------- /skills -------
 
-// --- certificates ---
+// ------- certificates -------
 .section-certificates {
 
 }
 
-// --- /certificates ---
+// ------- /certificates -------
 
-// --- contacts ---
+// ------- contacts -------
 .section-contacts {
 
 }
 
-// --- /contacts ---
+// ------- /contacts -------
 

@@ -11,6 +11,11 @@
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
+  box-sizing: border-box;
+}
+
+*, *::before, *::after{
+  box-sizing: inherit;
 }
 
 /* Sections
@@ -177,6 +182,10 @@ textarea {
  * 1. Show the overflow in Edge.
  */
 
+button {
+  border: none;
+}
+
 button,
 input { /* 1 */
   overflow: visible;
@@ -211,7 +220,8 @@ button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
-  border-style: none;
+
+  border: none;
   padding: 0;
 }
 
