@@ -1,7 +1,8 @@
-@import "normalizer/normalize";
+@import "reset/reset.css";
+@import "fonts/fonts.css";
 @import "variables/variables";
 
-//------- mixins -------
+//-------- */ mixins -------- */
 @mixin font-rubik {
   font-family: 'Rubik', sans-serif;
 }
@@ -22,16 +23,15 @@
     position: relative;
     vertical-align: middle;
     width: 50%;
-
   }
 
   &::before {
-    right: 0.8em;
+    right: 0.6em;
     margin-left: -50%;
   }
 
   &::after {
-    left: 0.8em;
+    left: 0.6em;
     margin-right: -50%;
   }
 }
@@ -43,6 +43,7 @@
 }
 
 @mixin background-mask {
+
   content: "";
   position: absolute;
   z-index: 5;
@@ -78,10 +79,10 @@
   }
 }
 
-//------- /mixins -------
+//-------- */ /mixins -------- */
 
 
-// ------- common -------
+/* -------- common -------- */
 
 
 body {
@@ -90,7 +91,6 @@ body {
   font-style: normal;
   font-weight: $font-weight-regular;
   line-height: 1.6;
-
 }
 
 .section-outer {
@@ -101,10 +101,10 @@ body {
   margin: 0 auto;
 }
 
-// ------- /common -------
+/* -------- /common -------- */
 
 
-// ------- header -------
+/* -------- header -------- */
 .section-header {
   @include section-background("../img/background/header-bg2.jpg");
 
@@ -139,13 +139,13 @@ body {
 
   &-links {
     display: flex;
-    justify-content: center;
 
     &__item {
       text-decoration: none;
       margin: 0 25px;
 
-      &:hover .logo {
+      &:hover .logo,
+      &:focus .logo {
         transform: scale(1.15);
       }
 
@@ -179,9 +179,9 @@ body {
   }
 }
 
-// ------- /header -------
+/* -------- /header -------- */
 
-// ------- about -------
+/* -------- about -------- */
 .section-about {
   @include section-bottom-padding;
   background-color: $color-bg-main;
@@ -192,17 +192,22 @@ body {
 
   &-content {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+
   }
 
   &-photo {
+    min-height: 220px;
+    min-width: 220px;
+
     img {
       display: block;
       margin-left: auto;
       margin-right: auto;
       height: 220px;
-      width: auto;
+      width: 220px;
       border-radius: 100%;
     }
   }
@@ -233,17 +238,19 @@ body {
   &-description,
   &-facts {
     flex: 1;
+    margin-right: 30px;
   }
 
   &-description,
   &-facts {
-    height: 150px;
+    height: 170px;
+    min-width: 310px;
   }
 }
 
-// ------- /about -------
+/* -------- /about -------- */
 
-// ------- projects -------
+/* -------- projects -------- */
 .section-projects {
   @include section-bottom-padding;
   @include section-background("../img/background/projects-bg.jpg");
@@ -252,94 +259,102 @@ body {
     @include section-title($color-white);
   }
 
-  &-list {
-    width: 100%;
+  &__item {
+    display: flex;
+    position: relative;
 
-    &__item {
+    &:not(:last-child) {
+      margin-bottom: 70px;
+    }
+
+    &::after {
+      @include background-mask;
+    }
+
+    &-content {
       display: flex;
-      position: relative;
+      z-index: 10;
+      padding: 10px;
+    }
 
-      &:not(:last-child) {
-        margin-bottom: 70px;
+    &-picture {
+      overflow: hidden;
+
+      &:hover img {
+        transform: scale(1.1);
+        opacity: 0.85;
       }
 
-      &::after {
-        @include background-mask;
+      img {
+        object-fit: cover;
+        transition: .3s all;
       }
+    }
 
-      &-photo {
-        z-index: 10;
-        padding: 15px;
-        flex: 4;
+    &-description.project-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover
+
+      .project-description {
+        &__title {
+          font-weight: $font-weight-medium;
+          text-transform: uppercase;
+          font-size: 16px
         }
-      }
 
-      &-description.project-description {
-        z-index: 10;
-        padding: 15px;
-        flex: 3;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        &__tags {
+          display: flex;
+          flex-wrap: wrap;
 
+          &-tag {
+            color: $color-font-secondary;
+            border: 1.5px solid $color-black;
+            padding: 1px 8px;
+            margin-right: 12px;
+            margin-bottom: 10px;
+            font-size: 13px;
+          }
+        }
 
-        .project-description {
-          &__title {
-            font-weight: $font-weight-medium;
+        &__text {
+          font-size: 14px;
+
+          &-list {
+            @include list-style;
+
+            ul {
+              margin-block-start: 5px;
+            }
+          }
+        }
+
+        &__button-area {
+          display: flex;
+
+          &_item {
+            width: 110px;
+            height: 24px;
             text-transform: uppercase;
-          }
+            margin-right: 28px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: $font-weight-bold;
+            border-radius: 3px;
+            background-color: $color-bg-main;
+            color: $color-black;
+            transition: .3s all;
 
-          &__tags {
-            display: flex;
-            flex-wrap: wrap;
-
-            &-tag {
-              color: $color-font-secondary;
-              border: 1.5px solid $color-black;
-              padding: 1px 8px;
-              margin-right: 12px;
-              margin-bottom: 10px;
-              font-size: 13px;
+            &:hover,
+            &:focus {
+              transform: scale(1.06);
+              box-shadow: 0 0 7px 3px rgba(0, 209, 255, 0.3);
+              background-color: #d3ffff;
+              // cursor: pointer;
             }
-          }
 
-          &__text {
-            font-size: 14px;
 
-            &-list {
-              @include list-style;
-
-              ul {
-                margin-block-start: 5px;
-              }
-
-              span {
-                font-weight: $font-weight-medium;
-              }
-
-            }
-          }
-
-          &__button-area {
-            display: flex;
-
-            button {
-              width: 110px;
-              height: 24px;
-              text-transform: uppercase;
-              margin-right: 28px;
-              text-align: center;
-              font-size: 11px;
-              font-weight: $font-weight-bold;
-              border-radius: 3px;
-              background-color: $color-bg-main;
-              color: $color-black;
-            }
           }
         }
       }
@@ -347,26 +362,75 @@ body {
   }
 }
 
-// ------- /projects -------
+/* -------- /projects -------- */
 
-// ------- skills -------
+/* -------- skills -------- */
 .section-skills {
+  @include section-bottom-padding;
+  background-color: $color-bg-main;
 
+  &-title {
+    @include section-title($color-black);
+  }
+
+  &-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    &-type {
+      width: 480px;
+      padding: 0 50px;
+      margin-bottom: 30px;
+
+
+      &__title {
+        text-align: center;
+        font-size: 22px;
+        font-weight: $font-weight-medium;
+        margin-bottom: 20px;
+      }
+
+      &__list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding-left: 0;
+
+        &-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          list-style: none;
+          width: 33.3333%;
+          min-width: 95px;
+          margin-bottom: 20px;
+
+          .title {
+            text-align: center;
+            font-size: 14px;
+
+          }
+        }
+      }
+    }
+  }
 }
 
-// ------- /skills -------
+/* -------- /skills -------- */
 
-// ------- certificates -------
+/* -------- certificates -------- */
 .section-certificates {
 
 }
 
-// ------- /certificates -------
+/* -------- /certificates -------- */
 
-// ------- contacts -------
+/* -------- contacts -------- */
 .section-contacts {
 
 }
 
-// ------- /contacts -------
+/* -------- /contacts -------- */
 

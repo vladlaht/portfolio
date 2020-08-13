@@ -3,20 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Front-end developer">
     <link rel="shortcut icon" href="img/svg/vl.svg">
     <title>Vladislav Lahtarin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
-
 <body>
-
 <!-- Header-->
-<section class="section-outer section-header">
-    <div class="section-inner">
+<header>
+    <section class="section-outer section-header">
+        <div class="section-inner">
             <div class="section-header-person">
-                <div class="section-header-person__name">&#60;VladislavLahtarin/&#62;</div>
-                <div class="section-header-person__position"> Front-end developer</div>
+                <h1 class="section-header-person__name">Vladislav Lahtarin</h1>
+                <h2 class="section-header-person__position"> Front-end developer</h2>
             </div>
             <div class="section-header-links">
                 <a class="section-header-links__item" href="https://www.linkedin.com/in/vladislav-lahtarin/"
@@ -39,148 +38,179 @@
                     <div class="name">Resume</div>
                 </a>
             </div>
-    </div>
-</section>
+        </div>
+    </section>
+</header>
 <!-- /Header-->
 
-<!-- About-->
-<section class="section-outer section-about">
-    <div class="section-inner">
-        <h1 class="section-about-title">About</h1>
-        <div class="section-about-content">
-            <div class="section-about-photo">
-                <img src="img/pictures/about-picture.png" alt="photo">
-            </div>
-            <div class="section-about-description">
-                <span class="section-about-description__title">Hello,</span>
-                <div class="section-about-description__text">
-                    I am a web developer, who enjoy learning about new technologies
-                    and focuses on writing clean, efficient and elegant code.
+<main>
+    <!-- About-->
+    <section class="section-outer section-about">
+        <div class="section-inner">
+            <h1 class="section-about-title">About</h1>
+            <div class="section-about-content">
+                <div class="section-about-photo">
+                    <img src="img/pictures/about-picture.png" alt="photo">
+                </div>
+                <div class="section-about-description">
+                    <span class="section-about-description__title">Hello,</span>
+                    <div class="section-about-description__text">
+                        I am a web developer, who enjoy learning about new technologies
+                        and focuses on writing clean, efficient and elegant code.
+                    </div>
+                </div>
+                <div class="section-about-facts">
+                    <span class="section-about-facts__title">Random facts about me:</span>
+                    <div class="section-about-facts__list">
+                        <ul>
+                            <li>Love to cook</li>
+                            <li>Keen attention to details</li>
+                            <li>Don’t drink coffe and tea</li>
+                            <li>Perfectionist</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="section-about-facts">
-                <span class="section-about-facts__title">Random facts about me:</span>
-                <div class="section-about-facts__list">
-                    <ul>
-                        <li>Love to cook</li>
-                        <li>Keen attention to details</li>
-                        <li>Don’t drink coffe and tea</li>
-                        <li>Perfectionist</li>
+        </div>
+    </section>
+    <!-- /About-->
+
+    <!-- Projects-->
+    <section class="section-outer section-projects">
+        <div class="section-inner">
+            <h1 class="section-projects-title">Projects</h1>
+            <div class="section-projects__item">
+                <div class="section-projects__item-content">
+                    <div class="section-projects__item-picture">
+                        <img src="img/pictures/smarts-support.png" alt="">
+                    </div>
+                </div>
+                <div class="section-projects__item-content">
+                    <div class="section-projects__item-description project-description">
+                        <div class="project-description__title">Smarts support</div>
+                        <div class="project-description__tags">
+                            <div class="project-description__tags-tag">HTML</div>
+                            <div class="project-description__tags-tag">SCSS</div>
+                            <div class="project-description__tags-tag">Bootstrap</div>
+                            <div class="project-description__tags-tag">React</div>
+                            <div class="project-description__tags-tag">Redux</div>
+                            <div class="project-description__tags-tag">Spring boot</div>
+                            <div class="project-description__tags-tag">Figma</div>
+                        </div>
+                        <div class="project-description__text">
+                            <p>
+                                I had to make the Smarts support service application from scratch.
+                                The main purpose of this support service is to create and manage cases based on end
+                                customer problems.
+                            </p>
+                            <div class="project-description__text-list">
+                                <span> I was responsible for:</span>
+                                <ul>
+                                    <li>Web design</li>
+                                    <li>Develop web application using React-redux technology</li>
+                                    <li>Create simple backend for saving and receiving tickets</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="project-description__button-area">
+                            <button class="project-description__button-area_item">Code</button>
+                            <button class="project-description__button-area_item">Demo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /rojects-->
+
+    <!-- Skills-->
+    <section class="section-outer section-skills">
+        <div class="section-inner">
+            <h1 class="section-skills-title">Skills</h1>
+            <div class="section-skills-content">
+                <div class="section-skills-content-type">
+                    <div class="section-skills-content-type__title">Development</div>
+                    <ul class="section-skills-content-type__list">
+                        <li class="section-skills-content-type__list-item">
+                            <img class="picture" src="img/svg/skills/html-icon.svg" alt="html">
+                            <span class="title"> HTML</span>
+                        </li>
+                        <li class="section-skills-content-type__list-item">
+                            <img class="picture" src="img/svg/skills/css-icon.svg" alt="css">
+                            <span class="title"> CSS</span>
+                        </li>
+                        <li class="section-skills-content-type__list-item">
+                            <img class="picture" src="img/svg/skills/javascript-icon.svg" alt="js">
+                            <span class="title"> JavaScript</span>
+                        </li>
+                        <li class="section-skills-content-type__list-item">
+                            <img class="picture" src="img/svg/skills/bootstrap-icon.svg" alt="bootstrap">
+                            <span class="title"> Bootstrap</span>
+                        </li>
+                        <li class="section-skills-content-type__list-item">
+                            <img class="picture" src="img/svg/skills/react-icon.svg" alt="react">
+                            <span class="title"> React</span>
+                        </li>
+                        <li class="section-skills-content-type__list-item">
+                            <img class="picture" src="img/svg/skills/redux-icon.svg" alt="redux">
+                            <span class="title"> Redux</span>
+                        </li>
+                        <li class="section-skills-content-type__list-item">
+                            <img class="picture" src="img/svg/skills/sass-icon.svg" alt="sass">
+                            <span class="title"> Scss</span>
+                        </li>
+                        <li class="section-skills-content-type__list-item">
+                            <img class="picture" src="img/svg/skills/java-icon.svg" alt="java">
+                            <span class="title"> Java</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="section-skills-content-type">
+                    <div class="section-skills-content-type__title">Tools</div>
+                    <ul class="section-skills-content-type__list">
+                        <li class="section-skills-content-type__list-item">
+                            <img class="picture" src="img/svg/skills/postman-icon.svg" alt="postman">
+                            <span class="title"> Postman</span>
+                        </li>
+                        <li class="section-skills-content-type__list-item">
+                            <img class="picture" src="img/svg/skills/trello-icon.svg" alt="trello">
+                            <span class="title"> Trello</span>
+                        </li>
+                        <li class="section-skills-content-type__list-item">
+                            <img class="picture" src="img/svg/skills/github-icon.svg" alt="github">
+                            <span class="title"> Github</span>
+                        </li>
+                        <li class="section-skills-content-type__list-item">
+                            <img class="picture" src="img/svg/skills/git-icon.svg" alt="git">
+                            <span class="title"> Git</span>
+                        </li>
+                        <li class="section-skills-content-type__list-item">
+                            <img class="picture" src="img/svg/skills/figma-icon.svg" alt="figma">
+                            <span class="title"> Figma</span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- /About-->
+    </section>
+    <!-- /Skills-->
 
-<!-- Projects-->
-<section class="section-outer section-projects">
-    <div class="section-inner">
-        <h1 class="section-projects-title">Projects</h1>
-        <div class="section-projects-list">
-            <div class="section-projects-list__item">
-                <div class="section-projects-list__item-photo">
-                    <img src="img/pictures/smarts-support.png" alt="">
-                </div>
-                <div class="section-projects-list__item-description project-description">
-                    <h3 class="project-description__title">Smarts support</h3>
-                    <div class="project-description__tags">
-                        <div class="project-description__tags-tag">HTML</div>
-                        <div class="project-description__tags-tag">SCSS</div>
-                        <div class="project-description__tags-tag">Bootstrap</div>
-                        <div class="project-description__tags-tag">React</div>
-                        <div class="project-description__tags-tag">Redux</div>
-                        <div class="project-description__tags-tag">Spring boot</div>
-                        <div class="project-description__tags-tag">Figma</div>
-                    </div>
-                    <div class="project-description__text">
-                        <p>
-                            I had to make the Smarts support service application from scratch.
-                            The main purpose of this support service is to create and manage cases based on end
-                            customer problems.
-                        </p>
-                        <div class="project-description__text-list">
-                            <span> I was responsible for:</span>
-                            <ul>
-                                <li>Web design</li>
-                                <li>Develop web application using React-redux technology</li>
-                                <li>Create simple backend for saving and receiving tickets</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="project-description__button-area">
-                        <button>Code</button>
-                        <button>Demo</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-projects-list__item">
-                <div class="section-projects-list__item-photo">
-                    <img src="img/pictures/smarts-support.png" alt="image">
-                </div>
-                <div class="section-projects-list__item-description project-description">
-                    <h3 class="project-description__title">Smarts support</h3>
-                    <div class="project-description__tags">
-                        <div class="project-description__tags-tag">HTML</div>
-                        <div class="project-description__tags-tag">SCSS</div>
-                        <div class="project-description__tags-tag">Bootstrap</div>
-                        <div class="project-description__tags-tag">React</div>
-                        <div class="project-description__tags-tag">Redux</div>
-                        <div class="project-description__tags-tag">Spring boot</div>
-                        <div class="project-description__tags-tag">Figma</div>
-                    </div>
-                    <div class="project-description__text">
-                        <p>
-                            I had to make the Smarts support service application from scratch.
-                            The main purpose of this support service is to create and manage cases based on end
-                            customer problems.
-                        </p>
-                        <div class="project-description__text-list">
-                            <span> I was responsible for:</span>
-                            <ul>
-                                <li>Web design</li>
-                                <li>Develop web application using React-redux technology</li>
-                                <li>Create simple backend for saving and receiving tickets</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="project-description__button-area">
-                        <button type="button">Code</button>
-                        <button type="button">Demo</button>
-                    </div>
-                </div>
-            </div>
+    <!-- Certificates-->
+    <section class="section-outer section-certificates">
+        <div class="section-inner">
+            section-certificates
         </div>
-    </div>
-</section>
-<!-- /Projects-->
+    </section>
+    <!-- /Certificates-->
 
-<!-- Skills-->
-<section class="section-outer section-skills">
-    <div class="section-inner">
-        section-skills
-    </div>
-</section>
-<!-- /Skills-->
-
-<!-- Certificates-->
-<section class="section-outer section-certificates">
-    <div class="section-inner">
-        section-certificates
-    </div>
-</section>
-<!-- /Certificates-->
-
-<!-- Contacts-->
-<section class="section-outer section-contacts">
-    <div class="section-inner">
-        section-contacts
-    </div>
-</section>
-<!-- /Contacts-->
-
+    <!-- Contacts-->
+    <section class="section-outer section-contacts">
+        <div class="section-inner">
+            section-contacts
+        </div>
+    </section>
+    <!-- /Contacts-->
+</main>
 </body>
 
 </html>
