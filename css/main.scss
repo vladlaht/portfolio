@@ -81,10 +81,7 @@
 
 //-------- */ /mixins -------- */
 
-
 /* -------- common -------- */
-
-
 body {
   @include font-rubik;
   font-size: 15px;
@@ -147,6 +144,7 @@ body {
       &:hover .logo,
       &:focus .logo {
         transform: scale(1.15);
+        box-shadow: 0 0 15px 1px rgba(0, 209, 255, 0.4)
       }
 
       .logo {
@@ -158,16 +156,8 @@ body {
         height: 48px;
         transition: 0.40s;
         margin-bottom: 6px;
-
-        &::after {
-          @include background-mask;
-          border-radius: 100%;
-        }
-
-        img {
-          position: relative;
-          z-index: 10;
-        }
+        background: rgba(0, 11, 12, 0.7);
+        border-radius: 100%;
       }
 
       .name {
@@ -261,20 +251,25 @@ body {
 
   &__item {
     display: flex;
+    justify-content: center;
     position: relative;
-
-    &:not(:last-child) {
-      margin-bottom: 70px;
-    }
-
-    &::after {
-      @include background-mask;
-    }
+    flex-wrap: wrap;
+    background: rgba(0, 11, 12, 0.7);
 
     &-content {
       display: flex;
       z-index: 10;
       padding: 10px;
+      width: 510px;
+
+
+      //  &:first-child {
+      //    width: 545px
+      //  }
+      //  &:last-child {
+      //    width: 474px
+      //  }
+      //
     }
 
     &-picture {
@@ -353,8 +348,6 @@ body {
               background-color: #d3ffff;
               // cursor: pointer;
             }
-
-
           }
         }
       }
