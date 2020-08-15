@@ -1,5 +1,5 @@
-@import "reset/reset.css";
-@import "fonts/fonts.css";
+@import "reset/reset";
+@import "fonts/fonts";
 @import "variables/variables";
 
 //-------- */ mixins -------- */
@@ -42,8 +42,11 @@
   background-size: cover;
 }
 
-@mixin background-mask {
+@mixin section-background-color {
+  background-color: $color-bg-main;
+}
 
+@mixin background-mask {
   content: "";
   position: absolute;
   z-index: 5;
@@ -90,22 +93,18 @@ body {
   line-height: 1.6;
 }
 
-.section-outer {
-}
-
-.section-inner {
+.section-wrapper {
   max-width: 1020px;
   margin: 0 auto;
 }
 
 /* -------- /common -------- */
 
-
 /* -------- header -------- */
 .section-header {
-  @include section-background("../img/background/header-bg2.jpg");
+  @include section-background("../img/background/header-bg.jpg");
 
-  .section-inner {
+  .section-wrapper {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -138,8 +137,7 @@ body {
     display: flex;
 
     &__item {
-      text-decoration: none;
-      margin: 0 25px;
+      padding: 0 25px;
 
       &:hover .logo,
       &:focus .logo {
@@ -174,7 +172,7 @@ body {
 /* -------- about -------- */
 .section-about {
   @include section-bottom-padding;
-  background-color: $color-bg-main;
+  @include section-background-color;
 
   &-title {
     @include section-title($color-black);
@@ -246,7 +244,7 @@ body {
   @include section-background("../img/background/projects-bg.jpg");
 
   &-title {
-    @include section-title($color-white);
+    @include section-title($color-font-main);
   }
 
   &__item {
@@ -261,15 +259,6 @@ body {
       z-index: 10;
       padding: 10px;
       width: 510px;
-
-
-      //  &:first-child {
-      //    width: 545px
-      //  }
-      //  &:last-child {
-      //    width: 474px
-      //  }
-      //
     }
 
     &-picture {
@@ -346,7 +335,6 @@ body {
               transform: scale(1.06);
               box-shadow: 0 0 7px 3px rgba(0, 209, 255, 0.3);
               background-color: #d3ffff;
-              // cursor: pointer;
             }
           }
         }
@@ -359,8 +347,7 @@ body {
 
 /* -------- skills -------- */
 .section-skills {
-  @include section-bottom-padding;
-  background-color: $color-bg-main;
+  @include section-background-color;
 
   &-title {
     @include section-title($color-black);
@@ -375,7 +362,6 @@ body {
       width: 480px;
       padding: 0 50px;
       margin-bottom: 30px;
-
 
       &__title {
         text-align: center;
@@ -415,14 +401,131 @@ body {
 
 /* -------- certificates -------- */
 .section-certificates {
+  @include section-bottom-padding;
+  @include section-background("../img/background/certificates.jpg");
 
+  &-title {
+    @include section-title($color-font-main);
+  }
+
+  &-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    &__item {
+      padding: 12px;
+
+      &-picture {
+        position: relative;
+        overflow: hidden;
+        width: 315px;
+        height: 223px;
+
+        figcaption {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #E9FFFF;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          transition: .3s;
+          background: rgba(0, 11, 12, 0.8);;
+          font-size: 19px;
+          font-weight: 500;
+        }
+
+        img {
+          transition: .7s;
+        }
+
+        &:hover {
+          img {
+            transform: scale(1.10);
+            opacity: 0.85;
+          }
+
+          figcaption {
+            opacity: 1;
+          }
+
+          box-shadow: 0 0 15px 0.5px rgba(118, 221, 255, 0.4)
+        }
+      }
+    }
+  }
 }
 
 /* -------- /certificates -------- */
 
 /* -------- contacts -------- */
 .section-contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #171F28;
+  color: $color-font-main;
+  padding: 35px 0;
 
+  &-links {
+    display: flex;
+    margin-bottom: 25px;
+
+    &__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 55px;
+      width: 55px;
+      margin: 0 15px;
+      background: #262f38;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
+
+      img {
+        position: relative;
+      }
+
+      &:hover {
+        background: #00a7a7;
+        color: black;
+        box-shadow: 0 0 1px 1px rgba(118, 221, 255, 0.3);
+        transform: scale(0.9);
+
+      }
+
+      &:hover img {
+        animation: verticalSlide 0.3s;
+      }
+
+      @keyframes verticalSlide {
+        0% {
+          bottom: 0;
+        }
+        50% {
+          bottom: -35px;
+        }
+        51% {
+          bottom: 35px
+        }
+        100% {
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  &-copyright {
+    text-align: center;
+    color: $color-font-main;
+    font-size: 13px;
+  }
 }
 
 /* -------- /contacts -------- */
