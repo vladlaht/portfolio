@@ -109,14 +109,15 @@ body {
 /* -------- header -------- */
 .section-header {
   @include section-background("../img/background/header-bg.jpg");
+  position: relative;
 
   .section-wrapper {
-    min-height: 100vh;
+    height: calc(100vh + 53px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 255px
+    padding-top: 255px;
   }
 
   &-person,
@@ -180,6 +181,50 @@ body {
         font-weight: $font-weight-regular;
         color: $color-font-main;
       }
+    }
+  }
+
+  &-nav {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    background: $color-bg-secondary;
+    border-bottom: 3px solid $color-bg-third;
+    height: 50px;
+    width: 100%;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+
+    &.fixed {
+      bottom: inherit;
+      left: 0;
+      position: fixed;
+      top: 0;
+      animation: popDown 0.4s;
+    }
+
+    @keyframes popDown {
+      0% {
+        transform: translateY(-100px);
+      }
+    }
+
+      &__link {
+        cursor: pointer;
+        font-size: 17px;
+        padding: 11px 25px;
+        text-transform: uppercase;
+        transition: color 0.4s;
+
+        .active {
+          color: $color-bg-third;
+        }
+
+        &:hover {
+          color: $color-bg-third;
+        }
+
     }
   }
 }
@@ -591,7 +636,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #171F28;
+  background: $color-bg-secondary;
   color: $color-font-main;
   padding: 35px 0;
 
@@ -617,8 +662,7 @@ body {
       }
 
       &:hover {
-        background: #00c5c5;
-        color: black;
+        background: $color-bg-third;
         box-shadow: 0 0 1px 1px rgba(118, 221, 255, 0.3);
         transform: scale(0.9);
 

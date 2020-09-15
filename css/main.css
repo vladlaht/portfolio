@@ -422,9 +422,10 @@ body {
   color: #E9FFFF;
   background: url("../img/background/header-bg.jpg") no-repeat center;
   background-size: cover;
+  position: relative;
 }
 .section-header .section-wrapper {
-  min-height: 100vh;
+  height: calc(100vh + 53px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -476,6 +477,43 @@ body {
   font-size: 12px;
   font-weight: 400;
   color: #E9FFFF;
+}
+.section-header-nav {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  background: #171F28;
+  border-bottom: 3px solid #00bbbb;
+  height: 50px;
+  width: 100%;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+}
+.section-header-nav.fixed {
+  bottom: inherit;
+  left: 0;
+  position: fixed;
+  top: 0;
+  animation: popDown 0.4s;
+}
+@keyframes popDown {
+  0% {
+    transform: translateY(-100px);
+  }
+}
+.section-header-nav__link {
+  cursor: pointer;
+  font-size: 17px;
+  padding: 11px 25px;
+  text-transform: uppercase;
+  transition: color 0.4s;
+}
+.section-header-nav__link .active {
+  color: #00bbbb;
+}
+.section-header-nav__link:hover {
+  color: #00bbbb;
 }
 
 /* -------- /header -------- */
@@ -925,8 +963,7 @@ body {
   position: relative;
 }
 .section-contacts-links__item:hover {
-  background: #00c5c5;
-  color: black;
+  background: #00bbbb;
   box-shadow: 0 0 1px 1px rgba(118, 221, 255, 0.3);
   transform: scale(0.9);
 }
