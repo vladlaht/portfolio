@@ -1,11 +1,7 @@
 @import "reset/reset";
-@import "fonts/fonts";
 @import "variables/variables";
 
 //-------- */ mixins -------- */
-@mixin font-rubik {
-  font-family: 'Rubik', sans-serif;
-}
 
 @mixin section-title($color) {
   overflow: hidden;
@@ -46,6 +42,10 @@
   background-color: $color-bg-main;
 }
 
+@mixin section-padding-bottom {
+  padding-bottom: 100px;
+}
+
 @mixin background-mask {
   content: "";
   position: absolute;
@@ -56,10 +56,6 @@
   left: 0;
   background-color: $color-bg-mask;
   opacity: 0.7;
-}
-
-@mixin section-bottom-padding {
-  padding-bottom: 70px;
 }
 
 @mixin list-style {
@@ -92,7 +88,7 @@ html {
 }
 
 body {
-  @include font-rubik;
+  font-family: 'Rubik', sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: $font-weight-regular;
@@ -130,7 +126,6 @@ body {
       font-size: 50px;
       font-weight: $font-weight-medium;
       margin-bottom: 60px;
-
     }
 
     &__position {
@@ -148,7 +143,6 @@ body {
         padding: 0 20px;
       }
     }
-
   }
 
   &-links {
@@ -210,21 +204,33 @@ body {
       }
     }
 
-      &__link {
-        cursor: pointer;
-        font-size: 17px;
-        padding: 11px 25px;
-        text-transform: uppercase;
-        transition: color 0.4s;
+    &__link {
+      cursor: pointer;
+      font-size: 17px;
+      padding: 11px 25px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      font-weight: $font-weight-medium;
 
-        .active {
-          color: $color-bg-third;
-        }
+      &.active {
+        color: $color-bg-third;
+      }
 
-        &:hover {
-          color: $color-bg-third;
-        }
+      &:hover {
+        color: $color-bg-third;
+      }
+    }
+  }
 
+  @media screen and (max-width: 768px) {
+    &-nav__link {
+      padding: 10px 20px;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    &-nav {
+      display: none;
     }
   }
 }
@@ -233,7 +239,7 @@ body {
 
 /* -------- about -------- */
 .section-about {
-  @include section-bottom-padding;
+  @include section-padding-bottom;
   @include section-background-color;
 
   &-title {
@@ -305,7 +311,6 @@ body {
   @media screen and (max-width: 520px) {
     &-content {
       flex-direction: column;
-
     }
 
     &-photo,
@@ -338,7 +343,7 @@ body {
 
 /* -------- projects -------- */
 .section-projects {
-  @include section-bottom-padding;
+  @include section-padding-bottom;
   @include section-background("../img/background/projects-bg.jpg");
 
   &-title {
@@ -347,7 +352,7 @@ body {
 
   &-item {
     &:not(:last-child) {
-      margin-bottom: 35px;
+      margin-bottom: 50px;
     }
 
     &__title {
@@ -407,7 +412,7 @@ body {
 
         &__text {
           font-size: 14px;
-          font-weight: $font-weight-light;
+          font-weight: $font-weight-regular;
 
           p {
             margin-bottom: 25px;
@@ -458,15 +463,14 @@ body {
 
       &__content {
         flex-direction: column;
-        align-items: center;
-
+        text-align: center;
       }
 
       &__title {
         font-weight: $font-weight-medium;
         text-transform: uppercase;
         font-size: 16px;
-        padding-top: 10px;
+        padding: 10px 5px 0;
         display: block;
       }
 
@@ -495,13 +499,11 @@ body {
           &__text {
             text-align: center;
 
-            &-list {
-              li {
-                padding-left: 0 !important;
+            &-list li {
+              padding-left: 0 !important;
 
-                &::before {
-                  content: none !important;
-                }
+              &::before {
+                content: none !important;
               }
             }
           }
@@ -517,6 +519,7 @@ body {
 /* -------- skills -------- */
 .section-skills {
   @include section-background-color;
+  @include section-padding-bottom;
 
   &-title {
     @include section-title($color-black);
@@ -528,14 +531,14 @@ body {
     flex-wrap: wrap;
 
     &-type {
-      width: 480px;
-      padding: 0 50px;
-      margin-bottom: 30px;
+      width: 440px;
+      padding: 0 40px;
+
 
       &__title {
         text-align: center;
         font-size: 22px;
-        font-weight: $font-weight-medium;
+        font-weight: $font-weight-bold;
         margin-bottom: 20px;
       }
 
@@ -558,10 +561,16 @@ body {
           .title {
             text-align: center;
             font-size: 14px;
-
+            font-weight: $font-weight-medium;
           }
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    &-content-type:first-child {
+      margin-bottom: 40px;
     }
   }
 }
@@ -570,7 +579,7 @@ body {
 
 /* -------- certificates -------- */
 .section-certificates {
-  @include section-bottom-padding;
+  @include section-padding-bottom;
   @include section-background("../img/background/certificates.jpg");
 
   &-title {
@@ -583,7 +592,7 @@ body {
     flex-wrap: wrap;
 
     &__item {
-      padding: 12px;
+      margin: 12px;
 
       &-picture {
         position: relative;
@@ -665,7 +674,6 @@ body {
         background: $color-bg-third;
         box-shadow: 0 0 1px 1px rgba(118, 221, 255, 0.3);
         transform: scale(0.9);
-
       }
 
       &:hover img {

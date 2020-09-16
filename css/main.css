@@ -366,38 +366,6 @@ a {
   text-decoration: none;
 }
 
-/* rubik-300 - latin */
-@font-face {
-  font-family: "Rubik";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Rubik Light"), local("Rubik-Light"), url("../../fonts/rubik-v9-latin-300.woff2") format("woff2"), url("../../fonts/rubik-v9-latin-300.woff") format("woff");
-  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-/* rubik-regular - latin */
-@font-face {
-  font-family: "Rubik";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Rubik"), local("Rubik-Regular"), url("../../fonts/rubik-v9-latin-regular.woff2") format("woff2"), url("../../fonts/rubik-v9-latin-regular.woff") format("woff");
-  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-/* rubik-500 - latin */
-@font-face {
-  font-family: "Rubik";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Rubik Medium"), local("Rubik-Medium"), url("../../fonts/rubik-v9-latin-500.woff2") format("woff2"), url("../../fonts/rubik-v9-latin-500.woff") format("woff");
-  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-/* rubik-700 - latin */
-@font-face {
-  font-family: "Rubik";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Rubik Bold"), local("Rubik-Bold"), url("../../fonts/rubik-v9-latin-700.woff2") format("woff2"), url("../../fonts/rubik-v9-latin-700.woff") format("woff");
-  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
 /* -------- common -------- */
 html {
   min-width: 320px;
@@ -419,7 +387,7 @@ body {
 /* -------- /common -------- */
 /* -------- header -------- */
 .section-header {
-  color: #E9FFFF;
+  color: #EFFFFF;
   background: url("../img/background/header-bg.jpg") no-repeat center;
   background-size: cover;
   position: relative;
@@ -476,7 +444,7 @@ body {
 .section-header-links__item .name {
   font-size: 12px;
   font-weight: 400;
-  color: #E9FFFF;
+  color: #EFFFFF;
 }
 .section-header-nav {
   bottom: 0;
@@ -507,20 +475,31 @@ body {
   font-size: 17px;
   padding: 11px 25px;
   text-transform: uppercase;
-  transition: color 0.4s;
+  transition: color 0.3s;
+  font-weight: 500;
 }
-.section-header-nav__link .active {
+.section-header-nav__link.active {
   color: #00bbbb;
 }
 .section-header-nav__link:hover {
   color: #00bbbb;
 }
+@media screen and (max-width: 768px) {
+  .section-header-nav__link {
+    padding: 10px 20px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .section-header-nav {
+    display: none;
+  }
+}
 
 /* -------- /header -------- */
 /* -------- about -------- */
 .section-about {
-  padding-bottom: 70px;
-  background-color: #EDFFFF;
+  padding-bottom: 100px;
+  background-color: #EEFFFF;
 }
 .section-about-title {
   overflow: hidden;
@@ -621,8 +600,8 @@ body {
 /* -------- /about -------- */
 /* -------- projects -------- */
 .section-projects {
-  padding-bottom: 70px;
-  color: #E9FFFF;
+  padding-bottom: 100px;
+  color: #EFFFFF;
   background: url("../img/background/projects-bg.jpg") no-repeat center;
   background-size: cover;
 }
@@ -634,7 +613,7 @@ body {
   font-size: 35px;
 }
 .section-projects-title::before, .section-projects-title::after {
-  background-color: #E9FFFF;
+  background-color: #EFFFFF;
   content: "";
   display: inline-block;
   height: 1px;
@@ -651,7 +630,7 @@ body {
   margin-right: -50%;
 }
 .section-projects-item:not(:last-child) {
-  margin-bottom: 35px;
+  margin-bottom: 50px;
 }
 .section-projects-item__title {
   display: none;
@@ -700,7 +679,7 @@ body {
 }
 .section-projects-item__description.project-description .project-description__text {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
 }
 .section-projects-item__description.project-description .project-description__text p {
   margin-bottom: 25px;
@@ -735,7 +714,7 @@ body {
   font-size: 11px;
   font-weight: 700;
   border-radius: 3px;
-  background-color: #EDFFFF;
+  background-color: #EEFFFF;
   color: #000000;
   transition: 0.3s all;
   padding: 3px 40px;
@@ -753,13 +732,13 @@ body {
   }
   .section-projects-item__content {
     flex-direction: column;
-    align-items: center;
+    text-align: center;
   }
   .section-projects-item__title {
     font-weight: 500;
     text-transform: uppercase;
     font-size: 16px;
-    padding-top: 10px;
+    padding: 10px 5px 0;
     display: block;
   }
   .section-projects-item__half {
@@ -793,7 +772,8 @@ body {
 /* -------- /projects -------- */
 /* -------- skills -------- */
 .section-skills {
-  background-color: #EDFFFF;
+  background-color: #EEFFFF;
+  padding-bottom: 100px;
 }
 .section-skills-title {
   overflow: hidden;
@@ -825,14 +805,13 @@ body {
   flex-wrap: wrap;
 }
 .section-skills-content-type {
-  width: 480px;
-  padding: 0 50px;
-  margin-bottom: 30px;
+  width: 440px;
+  padding: 0 40px;
 }
 .section-skills-content-type__title {
   text-align: center;
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 20px;
 }
 .section-skills-content-type__list {
@@ -854,13 +833,19 @@ body {
 .section-skills-content-type__list-item .title {
   text-align: center;
   font-size: 14px;
+  font-weight: 500;
+}
+@media screen and (max-width: 960px) {
+  .section-skills-content-type:first-child {
+    margin-bottom: 40px;
+  }
 }
 
 /* -------- /skills -------- */
 /* -------- certificates -------- */
 .section-certificates {
-  padding-bottom: 70px;
-  color: #E9FFFF;
+  padding-bottom: 100px;
+  color: #EFFFFF;
   background: url("../img/background/certificates.jpg") no-repeat center;
   background-size: cover;
 }
@@ -872,7 +857,7 @@ body {
   font-size: 35px;
 }
 .section-certificates-title::before, .section-certificates-title::after {
-  background-color: #E9FFFF;
+  background-color: #EFFFFF;
   content: "";
   display: inline-block;
   height: 1px;
@@ -894,7 +879,7 @@ body {
   flex-wrap: wrap;
 }
 .section-certificates-list__item {
-  padding: 12px;
+  margin: 12px;
 }
 .section-certificates-list__item-picture {
   position: relative;
@@ -939,7 +924,7 @@ body {
   flex-direction: column;
   align-items: center;
   background: #171F28;
-  color: #E9FFFF;
+  color: #EFFFFF;
   padding: 35px 0;
 }
 .section-contacts-links {
@@ -986,7 +971,7 @@ body {
 }
 .section-contacts-copyright {
   text-align: center;
-  color: #E9FFFF;
+  color: #EFFFFF;
   font-size: 13px;
 }
 
