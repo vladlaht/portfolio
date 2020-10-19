@@ -382,6 +382,7 @@ body {
 .section-wrapper {
   max-width: 1040px;
   margin: 0 auto;
+  position: relative;
 }
 
 /* -------- /common -------- */
@@ -505,7 +506,7 @@ body {
   overflow: hidden;
   text-align: center;
   font-weight: 500;
-  padding: 60px 0;
+  padding: 60px 0 45px;
   font-size: 35px;
 }
 .section-about-title::before, .section-about-title::after {
@@ -604,12 +605,23 @@ body {
   color: #EFFFFF;
   background: url("../img/background/projects-bg.jpg") no-repeat center;
   background-size: cover;
+  position: relative;
+}
+.section-projects::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000B0C;
+  opacity: 0.3;
 }
 .section-projects-title {
   overflow: hidden;
   text-align: center;
   font-weight: 500;
-  padding: 60px 0;
+  padding: 60px 0 45px;
   font-size: 35px;
 }
 .section-projects-title::before, .section-projects-title::after {
@@ -630,7 +642,7 @@ body {
   margin-right: -50%;
 }
 .section-projects-item:not(:last-child) {
-  margin-bottom: 50px;
+  margin-bottom: 70px;
 }
 .section-projects-item__title {
   display: none;
@@ -799,7 +811,7 @@ body {
   overflow: hidden;
   text-align: center;
   font-weight: 500;
-  padding: 60px 0;
+  padding: 60px 0 45px;
   font-size: 35px;
 }
 .section-skills-title::before, .section-skills-title::after {
@@ -873,7 +885,7 @@ body {
   overflow: hidden;
   text-align: center;
   font-weight: 500;
-  padding: 60px 0;
+  padding: 60px 0 45px;
   font-size: 35px;
 }
 .section-certificates-title::before, .section-certificates-title::after {

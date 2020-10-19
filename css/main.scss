@@ -7,7 +7,7 @@
   overflow: hidden;
   text-align: center;
   font-weight: $font-weight-medium;
-  padding: 60px 0;
+  padding: 60px 0 45px;
   font-size: 35px;
 
   &::before,
@@ -38,24 +38,23 @@
   background-size: cover;
 }
 
+@mixin section-background-mask {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $color-bg-mask;
+  opacity: 0.3;
+}
+
 @mixin section-background-color {
   background-color: $color-bg-main;
 }
 
 @mixin section-padding-bottom {
   padding-bottom: 100px;
-}
-
-@mixin background-mask {
-  content: "";
-  position: absolute;
-  z-index: 5;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: $color-bg-mask;
-  opacity: 0.7;
 }
 
 @mixin list-style {
@@ -116,6 +115,7 @@ body {
 .section-wrapper {
   max-width: 1040px;
   margin: 0 auto;
+  position: relative;
 }
 
 /* -------- /common -------- */
@@ -356,13 +356,17 @@ body {
   }
 }
 
-
 /* -------- /about -------- */
 
 /* -------- projects -------- */
 .section-projects {
   @include section-padding-bottom;
   @include section-background("../img/background/projects-bg.jpg");
+  position: relative;
+
+  &::before {
+    @include section-background-mask;
+  }
 
   &-title {
     @include section-title($color-font-main);
@@ -370,7 +374,7 @@ body {
 
   &-item {
     &:not(:last-child) {
-      margin-bottom: 50px;
+      margin-bottom: 70px;
     }
 
     &__title {
